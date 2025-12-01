@@ -1,0 +1,33 @@
+{
+  "name": "proofme",
+  "version": "1.0.0",
+  "description": "**La tua carriera, certificata e immutabile.** Piattaforma di certificazione CV su *Blockchain Permissioned* simulata.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LilPessy/ProofMe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LilPessy/ProofMe/issues"
+  },
+  "homepage": "https://github.com/LilPessy/ProofMe#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
