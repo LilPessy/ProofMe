@@ -1,20 +1,23 @@
+// app.js (o index.js)
 const express = require('express');
 const cors = require('cors');
+// ... altri import
+
+// 1. IMPORTA IL FILE DELLE ROTTE
+const certificatiRoutes = require('./routes/certificatiRoutes'); // Aggiusta il percorso se necessario
+
 const app = express();
-const port = 3000;
 
-// Middleware
 app.use(cors());
-app.use(express.json()); // Per leggere i JSON in arrivo
+app.use(express.json());
 
-// Rotta di test
-app.get('/', (req, res) => {
-  res.send('ProofMe Backend is running! 🚀');
-});
+// ... altre configurazioni
 
-// Qui importeremo le rotte (es. /api/auth, /api/certificati)
-// ...
+// 2. USA LE ROTTE
+// Tutte le chiamate inizieranno con /api/certificati
+app.use('/api/certificati', certificatiRoutes); 
 
-app.listen(port, () => {
-  console.log(`Server attivo su http://localhost:${port}`);
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server attivo su http://localhost:${PORT}`);
 });
