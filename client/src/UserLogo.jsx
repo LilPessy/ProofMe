@@ -1,7 +1,7 @@
 // 1. IMPORTA GLI HOOKS DA REACT (Mancava questa riga!)
 import { useState, useEffect } from 'react'; 
 import './UserLogo.css'; 
-import profilePic from './assets/danielephoto.png';
+import profilePic from './assets/danielephoto.png'
 
 function UserLogo() {
 
@@ -33,13 +33,7 @@ function UserLogo() {
   return (
     <div className="profile-container">
       <div className="image-wrapper">
-        <img 
-            src={fotoDaMostrare} 
-            alt="Profile" 
-            className="profile-img"
-            // Se l'immagine del DB non si carica (es. link rotto), usa quella di default
-            onError={(e) => { e.target.src = profilePic; }} 
-        />
+        <img src={profilePic} alt="Daniele Profile" className="profile-img" />
       </div>
       <h2 className="greeting">{nomeDaMostrare}</h2>
     </div>
