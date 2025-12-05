@@ -1,14 +1,24 @@
-import { useState } from 'react'
-import './App.css'
-import Navbar from './Navbar.jsx'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Home from './pages/Home';
 
 function App() {
-
   return (
-    <div className='app'>
-      <Navbar type='login'/>
-      <Navbar type='home'/>
-    </div>
+    // 1. BrowserRouter avvolge tutta l'app
+    <BrowserRouter>
+      
+      {/* 2. Routes contiene l'elenco delle possibili strade */}
+      <Routes>
+        
+        {/* 3. Ogni Route dice: "Se l'URL è questo, mostra questo componente" */}
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        
+        {/* Puoi aggiungerne altre, es: */}
+        {/* <Route path="/azienda" element={<DashboardAzienda />} /> */}
+
+      </Routes>
+    </BrowserRouter>
   )
 }
 
