@@ -1,0 +1,16 @@
+/* Styling per centrare la timeline */
+.timeline-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* La barra verticale blu */
+.timeline-connector {
+  width: 10px;        /* Spessore della linea */
+  height: 60px;       /* Lunghezza della linea */
+  background-color: #0D2B62; /* Blu scuro */
+  border-radius: 5px; /* Bordi arrotondati della linea */
+  margin: 10px 0;     /* Spazio sopra e sotto la linea */
+}
