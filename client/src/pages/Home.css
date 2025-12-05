@@ -14,3 +14,42 @@
   border-radius: 5px; /* Bordi arrotondati della linea */
   margin: 10px 0;     /* Spazio sopra e sotto la linea */
 }
+/* Contenitore per centrare il bottone e dargli spazio sopra */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Lo stile del bottone stesso */
+.download-btn {
+  background-color: #0D2B62; /* Il tuo blu scuro */
+  color: white;
+  border: none;
+  border-radius: 30px; /* Bordo a pillola */
+  padding: 15px 40px;  /* Spazio interno: 15px vert, 40px orizz */
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: sans-serif;
+  cursor: pointer;
+  
+  /* Flexbox per allineare testo e icona */
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Spazio tra testo e icona */
+  
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Ombra per farlo "galleggiare" */
+  transition: transform 0.2s; /* Animazione click */
+}
+
+/* Effetto quando ci clicchi sopra */
+.download-btn:active {
+  transform: scale(0.95);
+}
+
+/* Dimensione dell'icona dentro il bottone */
+.btn-icon {
+  width: 24px;
+  height: 24px;
+}
