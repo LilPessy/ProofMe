@@ -1,7 +1,7 @@
 // 1. IMPORTA GLI HOOKS DA REACT (Mancava questa riga!)
 import { useState, useEffect } from 'react'; 
 import './UserLogo.css'; 
-import profilePic from './assets/danielephoto.png'
+import profilePic from '../public/upload/danielephoto.png'; // Logo di default se non c'è una foto utente
 
 function UserLogo() {
 

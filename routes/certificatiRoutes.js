@@ -30,7 +30,7 @@ router.get('/candidato/:id', async (req, res) => {
         JOIN Emittente e ON c.emittente_id = e.id
         LEFT JOIN Blocco b ON c.id = b.certificato_id
         WHERE c.candidato_id = ?
-        ORDER BY c.data_inizio DESC;
+        ORDER BY c.data_inizio;
     `;
 
     try {
