@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import Navbar from '../Navbar';
 
 function Login() {
   const navigate = useNavigate(); // Questo è il gancio per cambiare pagina via codice

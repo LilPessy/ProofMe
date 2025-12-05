@@ -1,9 +1,9 @@
-import Navbar from '../components/Navbar'; // La tua Navbar parametrica!
+import Navbar from '../Navbar'; // La tua Navbar parametrica!
 
 function Home() {
   return (
     <div>
-      <Navbar type="candidato" />
+      <Navbar type="home" />
     </div>
   );
 }
