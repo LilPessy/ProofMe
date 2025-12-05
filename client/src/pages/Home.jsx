@@ -3,9 +3,14 @@ import UserLogo from '../UserLogo';
 import ExperienceCard from '../ExperienceCard';
 import polibalogo from '../assets/polibalogo.png';
 import aurigaLogo from '../assets/aurigalogo.png';
+import downloadIcon from '../assets/download.svg';
 import './Home.css'
 
 function Home() {
+  const handleDownload = () => {
+    // Qui puoi mettere la logica reale, per ora mettiamo un alert
+    alert("Funzionalità di download in arrivo!");
+  };
   return (
     <div className="home-container">
       {/* 1. La barra di navigazione in alto */}
@@ -45,9 +50,15 @@ function Home() {
         />
 
       </div>
-      
-      {/* Spazio vuoto o bottone download in futuro */}
+      <div className="button-container">
+        <button className="download-btn" onClick={handleDownload}>
+          Scarica CV
+          <img src={downloadIcon} alt="Download icon" className="btn-icon" />
+        </button>
+      </div>
+  {/* Spazio vuoto finale per non attaccare il bottone al bordo inferiore */}
       <div style={{ height: '50px' }}></div>
+    
     </div>
   );
 }
