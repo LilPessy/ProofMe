@@ -1,5 +1,24 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.profile-container {
+  display: flex;
+  flex-direction: column; /* Impila gli elementi verticalmente */
+  align-items: center;    /* Centra tutto orizzontalmente */
+  margin-top: 40px;       /* Un po' di spazio dalla Navbar */
+  padding-bottom: 20px;
+}
+
+.profile-img {
+  width: 150px;           /* Dimensione fissa */
+  height: 150px;          /* Stessa altezza per farla quadrata all'inizio */
+  border-radius: 50%;     /* Per farla rotonda! */
+  object-fit: cover;      /* Fondamentale: evita che la foto si deformi */
+  border: 5px solid white; /* Opzionale: bordo bianco come spesso si usa */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Un'ombra leggera per profondità */
+}
+
+.greeting {
+  color: #0D2B62;         /* Lo stesso blu scuro della tua Navbar */
+  font-family: sans-serif;
+  font-size: 1.8rem;
+  margin-top: 15px;       /* Spazio tra foto e testo */
+  font-weight: 700;
 }
