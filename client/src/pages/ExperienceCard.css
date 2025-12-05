@@ -1,0 +1,64 @@
+.card-container {
+  background-color: white;
+  border-radius: 15px; /* Arrotondamento card */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* L'ombra dietro la card */
+  width: 90%;
+  max-width: 350px; /* Larghezza massima per non farla diventare enorme */
+  margin: 0 auto; /* Centra la card */
+  overflow: hidden; /* Assicura che l'header non esca dai bordi arrotondati */
+  font-family: sans-serif;
+  text-align: left; /* Testo allineato a sinistra come nel design */
+}
+
+/* Header Blu Scuro */
+.card-header {
+  background-color: #0D2B62; /* Il tuo blu scuro */
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  background: white; /* Sfondo bianco per il logo se trasparente */
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.card-title {
+  color: white;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Corpo della card */
+.card-body {
+  padding: 20px;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.info-row p {
+  margin: 5px 0;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #0D2B62; /* Linea divisoria blu scuro */
+  margin: 10px 0;
+}
+
+/* Pillola grigia per l'Hash */
+.hash-container {
+  background-color: #4a4a4a; /* Grigio scuro */
+  color: #888;
+  padding: 8px;
+  border-radius: 20px;
+  margin-top: 15px;
+  font-size: 0.6rem;
+  text-align: center;
+  word-break: break-all; /* Per spezzare la stringa lunga se serve */
+}/* src/components/ExperienceCard.css */
