@@ -1,4 +1,3 @@
-import React from 'react';
 import './UserLogo.css'; 
 import profilePic from './assets/danielephoto.png'
 
@@ -13,4 +12,4 @@ function UserLogo() {
   );
 }
 
-export default ProfileHeader;
+export default UserLogo;
