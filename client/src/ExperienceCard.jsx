@@ -3,6 +3,12 @@ import React from 'react';
 import './ExperienceCard.css';
 
 function ExperienceCard({ logo, title, type, description, startDate, endDate, outcome, hash }) {
+  
+  const handleClick = (hash) => {
+    navigator.clipboard.writeText(hash);
+    alert('Hash copiato');
+  };
+  
   return (
     <div className="card-container">
       {/* Intestazione Blu */}
@@ -36,7 +42,7 @@ function ExperienceCard({ logo, title, type, description, startDate, endDate, ou
         </div>
 
         {/* Pillola con l'Hash */}
-        <div className="hash-container">
+        <div className="hash-container" onClick={()=>handleClick(hash)}>
           <span className="hash-text">{hash}</span>
         </div>
 
