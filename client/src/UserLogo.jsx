@@ -3,7 +3,7 @@ import './UserLogo.css';
 import defaultPic from '../public/upload/danielephoto.png'; 
 
 // 1. Aggiungiamo le props tra parentesi graffe
-function UserLogo({ nome, foto }) {
+function UserLogo({ nome, foto, type}) {
 
   // Logica: Se 'foto' arriva dal padre, usala. Altrimenti usa defaultPic.
   const imageSource = foto ? foto : defaultPic;
@@ -18,7 +18,7 @@ function UserLogo({ nome, foto }) {
             onError={(e) => { e.target.src = defaultPic; }}
         />
       </div>
-      <h2 className="greeting">Ciao, {nome || '...'}</h2>
+      <h2 className="greeting">{type === 'candidato' ? 'Ciao,' : null} {nome || '...'}</h2>
     </div>
   );
 }
