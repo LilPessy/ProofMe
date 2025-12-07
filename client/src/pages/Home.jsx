@@ -92,8 +92,7 @@ function Home() {
       {userType === 'azienda' && (
         <Button 
           content="Aggiungi Certificato" 
-          callback={handleAction} 
-          icon={downloadIcon}
+          callback={handleAction}
         />
       )}
 
