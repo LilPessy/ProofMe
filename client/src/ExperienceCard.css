@@ -14,7 +14,9 @@
 
 /* Header Blu Scuro */
 .card-header {
-  background-color: #0D2B62; /* Il tuo blu scuro */
+  background: #0D2B62;
+    background: linear-gradient(90deg, rgba(13, 43, 98, 1) 0%, rgba(0, 19, 54, 1) 100%);
+
   padding: 15px;
   display: flex;
   align-items: center;
@@ -63,4 +65,5 @@
   font-size: 0.6rem;
   text-align: center;
   word-break: break-all; /* Per spezzare la stringa lunga se serve */
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.2);
 }

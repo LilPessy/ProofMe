@@ -10,7 +10,9 @@
 .timeline-connector {
   width: 10px;        /* Spessore della linea */
   height: 60px;       /* Lunghezza della linea */
-  background-color: #0D2B62; /* Blu scuro */
+  background: #0D2B62;
+    background: linear-gradient(180deg, rgba(13, 43, 98, 1) 0%, rgba(0, 19, 54, 1) 100%);
+
   border-radius: 5px; /* Bordi arrotondati della linea */
   margin: 10px 0;     /* Spazio sopra e sotto la linea */
 }

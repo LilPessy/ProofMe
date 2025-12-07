@@ -7,7 +7,9 @@
 
 /* Lo stile del bottone stesso */
 .btn {
-  background-color: #0D2B62; /* Il tuo blu scuro */
+  background: #0D2B62;
+    background: linear-gradient(120deg, rgba(13, 43, 98, 1) 0%, rgba(0, 19, 54, 1) 100%);
+
   color: white;
   border: none;
   border-radius: 30px; /* Bordo a pillola */
