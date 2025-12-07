@@ -4,9 +4,11 @@ const cors = require('cors');
 // ... altri import
 
 // 1. IMPORTA IL FILE DELLE ROTTE
-const certificatiRoutes = require('./routes/certificatiRoutes'); // Aggiusta il percorso se necessario
+const certificatiRoutes = require('./routes/certificatiRoutes'); 
 
-const candidatiRoutes = require('./routes/candidatiRoutes'); // Aggiusta il percorso se necessario
+const candidatiRoutes = require('./routes/candidatiRoutes'); 
+
+const emittentiRoutes = require('./routes/emittentiRoutes'); 
 
 const app = express();
 
@@ -19,6 +21,7 @@ app.use(express.json());
 // Tutte le chiamate inizieranno con /api/certificati
 app.use('/api/certificati', certificatiRoutes); 
 app.use('/api/candidati', candidatiRoutes);
+app.use('/api/emittenti', emittentiRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {
