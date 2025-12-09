@@ -16,8 +16,7 @@
 }
 
 .greeting {
-  color: #0D2B62;         /* Lo stesso blu scuro della tua Navbar */
-  font-family: sans-serif;
+  color: #0D2B62;   
   font-size: 1.8rem;
   margin-top: 15px;       /* Spazio tra foto e testo */
   font-weight: 700;

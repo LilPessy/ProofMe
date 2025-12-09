@@ -16,7 +16,6 @@
   padding: 15px 40px;  /* Spazio interno: 15px vert, 40px orizz */
   font-size: 1.2rem;
   font-weight: bold;
-  font-family: sans-serif;
   cursor: pointer;
   
   /* Flexbox per allineare testo e icona */
