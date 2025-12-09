@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
 // Percorsi ai componenti (adatta se necessario)
-import Navbar from '../Navbar';
-import UserLogo from '../UserLogo';
-import ExperienceCard from '../ExperienceCard';
-import Button from '../Button';
+import Navbar from '../components/Navbar';
+import UserLogo from '../components/UserLogo';
+import ExperienceCard from '../components/ExperienceCard';
+import Button from '../components/Button';
 
 import downloadIcon from '../assets/download.svg';
 import './Home.css';

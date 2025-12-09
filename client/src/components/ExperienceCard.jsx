@@ -1,6 +1,6 @@
 // src/components/ExperienceCard.jsx
 import React from 'react';
-import './ExperienceCard.css';
+import './style/ExperienceCard.css';
 
 function ExperienceCard({ logo, title, type, description, startDate, endDate, outcome, hash }) {
   

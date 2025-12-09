@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import proofmeLogo from '../public/Logo.svg'
-import hamburgerMenu from './assets/hamburgerMenu.svg'
-import './Navbar.css'
+
+import proofmeLogo from '../../public/Logo.svg'
+import hamburgerMenu from '../assets/hamburgerMenu.svg'
+import './style/Navbar.css'
 
 function Navbar({type}) {
 

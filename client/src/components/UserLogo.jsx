@@ -1,6 +1,6 @@
-import './UserLogo.css'; 
+import './style/UserLogo.css'; 
 // Importiamo sempre l'immagine di default nel caso il DB non abbia la foto o l'URL sia rotto
-import defaultPic from '../public/upload/danielephoto.png'; 
+import defaultPic from '../../public/upload/danielephoto.png'; 
 
 // 1. Aggiungiamo le props tra parentesi graffe
 function UserLogo({ nome, foto, type}) {
