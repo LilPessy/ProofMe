@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Button from '../components/Button';
 
 function Login() {
   const navigate = useNavigate();
@@ -23,15 +24,9 @@ function Login() {
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
         
         <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-            {/* Bottone per entrare come Candidato */}
-            <button onClick={() => handleLogin('candidato')} style={{padding: '10px 20px'}}>
-            Entra come Daniele (Candidato)
-            </button>
-
-            {/* Bottone per entrare come Azienda (Opzionale, per testare l'altra vista) */}
-            <button onClick={() => handleLogin('azienda')} style={{padding: '10px 20px', backgroundColor: '#333'}}>
-            Entra come Poliba (Azienda)
-            </button>
+            
+            <Button content="Entra come Candidato" callback={() => handleLogin('candidato')} />
+            <Button content="Entra come Azienda" callback={() => handleLogin('azienda')} />
         </div>
         </div>
     </>    
