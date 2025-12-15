@@ -26,7 +26,7 @@ function Registrazione(){
             <RadioBtn content="Azienda/Ente" icon={aziendaIcon} callback={() => handleTypeSelection("azienda")}  isSelected={type==="azienda"}/>
             <RadioBtn content="Persona" icon={personaIcon} callback={() => handleTypeSelection("candidato")}  isSelected={type==="candidato"}/>
         </div>
-
+    
         {type === 'candidato' ? (
             <form>
                 <FormField type="text" name="Nome" placeholder="Inserisci il tuo nome" />

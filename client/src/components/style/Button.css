@@ -1,8 +1,9 @@
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 /* Lo stile del bottone stesso */
@@ -21,10 +22,12 @@
   /* Flexbox per allineare testo e icona */
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px; /* Spazio tra testo e icona */
   
   box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Ombra per farlo "galleggiare" */
   transition: transform 0.2s; /* Animazione click */
+  width: 70%;
 }
 
 
