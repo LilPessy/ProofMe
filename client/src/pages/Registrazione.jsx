@@ -3,23 +3,13 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import FormField from '../components/FormField';
 import RadioBtn from '../components/RadioBtn';
+import { useState } from 'react';
 import './Registrazione.css'
 
 function Registrazione(){
   const navigate = useNavigate();
 
-  const handleRegistrazione = (tipoUtente) => {
-    // 1. HARDCODING: Simuliamo che sia l'utente Daniele (ID 1)
-    // Nella realtà qui riceveresti un token dal backend dopo aver mandato email/password
-    const mockUserId = '1'; 
-    
-    // 2. SALVATAGGIO: Scriviamo nella memoria del browser
-    localStorage.setItem('userId', mockUserId);
-    localStorage.setItem('userType', tipoUtente); // 'candidato' o 'azienda'
-
-    // 3. REINDIRIZZAMENTO
-    navigate('/home');
-  };
+  const [type, setType] = useState('candidato');
 
   return (
     <div className='registrazione'>
@@ -32,7 +22,7 @@ function Registrazione(){
             <form>
                 <FormField type="text" name="Nome" placeholder="Inserisci il tuo nome" />
                 <FormField type="text" name="Cognome" placeholder="Inserisci il tuo cognome" />
-                <FormField type="date" name="Data di Nascita" placeholder="dd/mm/yyyy"/>
+                <FormField type="date" name="Data di Nascita"/>
             </form>
         ):(
             <form>
