@@ -24,8 +24,16 @@ function Login() {
     <div className='login'>
         <Navbar/>
         <form>
-          <FormField type="email" name="Email" placeholder="Daniele è forte" />
+          <FormField type="email" name="Email" placeholder="Inserisci la tua email" />
+          
+          <FormField type="password" name="Password" placeholder="Inserisci la tua password" />
+          
         </form>
+
+        <Button content="Accedi"/>
+        <div style={{ textAlign: 'center', marginTop: '20px' }} onClick={()=>navigate('/home')}>
+           Torna Indietro
+        </div>
     </div>    
   );
 }
