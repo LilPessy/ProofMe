@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Registrazione from './pages/Registrazione';
 import './App.css';
 
 function App() {
@@ -14,9 +15,7 @@ function App() {
         {/* 3. Ogni Route dice: "Se l'URL è questo, mostra questo componente" */}
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        
-        {/* Puoi aggiungerne altre, es: */}
-        {/* <Route path="/azienda" element={<DashboardAzienda />} /> */}
+        <Route path="/signin" element={<Registrazione/>} />
 
       </Routes>
     </BrowserRouter>
