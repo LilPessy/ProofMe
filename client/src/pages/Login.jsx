@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
+import FormField from '../components/FormField';
+import './Login.css'
 
 function Login() {
   const navigate = useNavigate();
@@ -19,17 +21,12 @@ function Login() {
   };
 
   return (
-    <>
+    <div className='login'>
         <Navbar/>
-        <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        
-        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-            
-            <Button content="Entra come Candidato" callback={() => handleLogin('candidato')} />
-            <Button content="Entra come Azienda" callback={() => handleLogin('azienda')} />
-        </div>
-        </div>
-    </>    
+        <form>
+          <FormField type="email" name="Email" placeholder="Daniele è forte" />
+        </form>
+    </div>    
   );
 }
 
