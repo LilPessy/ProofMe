@@ -11,3 +11,11 @@ form{
     width: 90%;
     margin-top: 40px;
 }
+
+.radio-group{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 60%;
+}

@@ -4,6 +4,8 @@ import Button from '../components/Button';
 import FormField from '../components/FormField';
 import RadioBtn from '../components/RadioBtn';
 import { useState } from 'react';
+import aziendaIcon from '../assets/azienda.svg';
+import personaIcon from '../assets/persona.svg';
 import './Registrazione.css'
 
 function Registrazione(){
@@ -11,12 +13,18 @@ function Registrazione(){
 
   const [type, setType] = useState('candidato');
 
+  const handleTypeSelection = (selectedType) => {
+    setType(selectedType);
+  }
+
   return (
     <div className='registrazione'>
         <Navbar/>
-
-        <RadioBtn content="Azienda/Ente" />
-        <RadioBtn content="Persona" />
+        
+        <div className='radio-group'>
+            <RadioBtn content="Azienda/Ente" icon={aziendaIcon} callback={() => handleTypeSelection("azienda")}  isSelected={type==="azienda"}/>
+            <RadioBtn content="Persona" icon={personaIcon} callback={() => handleTypeSelection("candidato")}  isSelected={type==="candidato"}/>
+        </div>
 
         {type === 'candidato' ? (
             <form>
