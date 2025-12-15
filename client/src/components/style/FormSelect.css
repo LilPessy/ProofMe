@@ -1,0 +1,35 @@
+/* Sovrascrive lo stile base della select per aggiungere la freccia personalizzata */
+select {
+    /* Rimuove la freccia nativa brutta del browser */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  
+    /* Colore di sfondo bianco esplicito */
+    background-color: white;
+  
+    /* Icona freccia SVG codificata con il colore #0B1E45 */
+    /*background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B1E45' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    */background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+  
+    /* Spazio extra a destra affinché il testo non vada sopra la freccia */
+    padding-right: 40px;
+    
+    cursor: pointer;
+  }
+  
+  /* Stile quando l'utente clicca sulla tendina */
+  select:focus {
+    outline: none;
+    border-color: #0B1E45;
+    box-shadow: 0 0 0 1px #0B1E45; /* Piccolo alone blu */
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #0B1E45;
+  }
