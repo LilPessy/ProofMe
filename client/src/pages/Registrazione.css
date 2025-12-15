@@ -9,13 +9,13 @@ form{
     display: flex;
     flex-direction: column;
     width: 90%;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .radio-group{
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
-    width: 60%;
+    margin-bottom: 10px;
+    width: 70%;
 }
