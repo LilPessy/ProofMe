@@ -153,6 +153,7 @@ function Home() {
         })}
       </div>
 
+        <div style={{ height: '30px' }}></div>
       {/* Nascondi bottone download se sei un'azienda */}
       {userType === 'candidato' && (
         <Button 
