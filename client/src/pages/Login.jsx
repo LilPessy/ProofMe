@@ -30,8 +30,8 @@ function Login() {
           
         </form>
 
-        <Button content="Accedi"/>
-        <div style={{ textAlign: 'center', marginTop: '20px' }} onClick={()=>navigate('/home')}>
+        <Button content="Accedi" callback={()=>handleLogin('candidato')}/>
+        <div style={{ textAlign: 'center', marginTop: '20px' }} onClick={()=>navigate('/')}>
            Torna Indietro
         </div>
     </div>    
