@@ -56,6 +56,9 @@ function Registrazione(){
             
         )}
         <Button content="Registrati"/>
+        <div style={{ textAlign: 'center', marginTop: '20px' , marginBottom: '40px'}} onClick={()=>navigate('/')}>
+           Torna Indietro
+        </div>
     </div>    
   );
 }
