@@ -1,12 +1,16 @@
 import './style/FormField.css';
 
-const FormField = ({name, type, placeholder}) => {
+const FormField = ({label, type, placeholder, name, value, onChange}) => {
   
     return (
       
           <div className="form-group">
-              <label>{name}</label>
-              <input type={type} placeholder={placeholder} />
+              <label>{label}</label>
+              <input 
+                type={type} placeholder={placeholder} 
+                name={name}          
+                value={value}
+                onChange={onChange}/>
           </div>
   
     );

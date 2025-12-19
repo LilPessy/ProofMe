@@ -1,7 +1,7 @@
 import React, { useState } from 'react'; // 1. Importa useState
 import './style/FormSelect.css';
 
-const FormSelect = ({ name, option1, option2, option3 }) => {
+const FormSelect = ({ name, value, onChange, option1, option2, option3 }) => {
   // 2. Crea una variabile di stato. Inizialmente è vuota ""
   const [valoreSelezionato, setValoreSelezionato] = useState("");
 
@@ -14,7 +14,7 @@ const FormSelect = ({ name, option1, option2, option3 }) => {
   };
 
   return (
-    <div class="form-group">
+    <div className="form-group">
       
       <label>{name}</label>
       

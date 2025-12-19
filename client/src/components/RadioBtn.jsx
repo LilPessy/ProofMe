@@ -1,16 +1,16 @@
 import './style/RadioBtn.css'; 
 
-function RadioBtn({icon, content, callback, isSelected}) {
+function RadioBtn({icon, content, onChange, isSelected}) {
 
 
   return (
-    <div className='radioWrap'>
-    <div className="radioBtn" onClick={callback}>
+    <label className='radioWrap' htmlFor={content.toLowerCase()}>
+    <div className="radioBtn"  >
         <img src={icon} alt="Icon" className="radio-icon" />
         {content}
     </div>
-    <input type="radio" name="userType" value={content.toLowerCase()} className="radio-input" checked={isSelected}/>
-    </div>
+    <input id={content.toLowerCase()} type="radio" name="userType" value={content.toLowerCase()} className="radio-input" onChange={onChange} checked={isSelected}/>
+    </label>
   );
 }
 
