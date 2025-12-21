@@ -1,33 +1,19 @@
-import React, { useState } from 'react'; // 1. Importa useState
 import './style/FormSelect.css';
 
-const FormSelect = ({ name, value, onChange, option1, option2, option3 }) => {
-  // 2. Crea una variabile di stato. Inizialmente è vuota ""
-  const [valoreSelezionato, setValoreSelezionato] = useState("");
-
-  // 3. Funzione per aggiornare lo stato quando l'utente cambia la tendina
-  const handleChange = (e) => {
-    setValoreSelezionato(e.target.value);
-    
-    // Se vuoi vedere in console cosa hai scelto:
-    console.log("Hai selezionato:", e.target.value); 
-  };
-
+const FormSelect = ({ label, name, value, onChange, option1, option2, option3 }) => {
   return (
     <div className="form-group">
-      
-      <label>{name}</label>
-      
-      {/* 4. Collega il value allo stato e aggiungi l'onChange */}
-      <select 
-        id="opzioni" 
-        value={valoreSelezionato} 
-        onChange={handleChange}
+      <label>{label}</label>
+
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
       >
-        <option value="">--Seleziona--</option>
-        <option value="opzione1">{option1}</option>
-        <option value="opzione2">{option2}</option>
-        <option value="opzione3">{option3}</option>
+        <option value="">-- Seleziona --</option>
+        <option value={option1}>{option1}</option>
+        <option value={option2}>{option2}</option>
+        <option value={option3}>{option3}</option>
       </select>
     </div>
   );
