@@ -58,6 +58,44 @@ function Registrazione(){
     }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    if (type === 'candidato') {
+      Object.entries(candidatoData).forEach(([key, value]) => {
+        if (value !== null) {
+          formData.append(key, value);
+        }
+      });
+
+      await fetch(
+        'http://localhost:3000/api/auth/register/candidato',
+        {
+          method: 'POST',
+          body: formData
+        }
+      );
+
+    } else {
+      Object.entries(aziendaData).forEach(([key, value]) => {
+        if (value !== null) {
+          formData.append(key, value);
+        }
+      });
+
+      await fetch(
+        'http://localhost:3000/api/auth/register/emittente',
+        {
+          method: 'POST',
+          body: formData
+        }
+      );
+    }
+  };
+
+
 
 
 
@@ -98,7 +136,7 @@ function Registrazione(){
 
             
         )}
-        <Button content="Registrati"/>
+        <Button content="Registrati" onClick={handleSubmit}/>
         <div style={{ textAlign: 'center', marginTop: '20px' , marginBottom: '40px'}} onClick={()=>navigate('/')}>
            Torna Indietro
         </div>
