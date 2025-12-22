@@ -12,7 +12,13 @@ const authRoutes = require('./routes/authRoutes'); // <--- NUOVO IMPORT
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+
+const path = require('path');
+
+
+// 🔥 SERVE LA CARTELLA UPLOADS
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 
 // 2. REGISTRA LE ROTTE

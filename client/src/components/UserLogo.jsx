@@ -11,7 +11,7 @@ function UserLogo({ nome, foto, type}) {
     <div className="profile-container">
       <div className="image-wrapper">
         <img 
-            src={`http://localhost:3000/${foto}`}
+            src={`http://localhost:3000${foto}`}
             alt="Profile Picture" 
             className="profile-img"
             onError={(e) => { e.target.src = defaultPic; }}

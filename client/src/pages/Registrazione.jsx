@@ -12,7 +12,7 @@ import FormSelect from '../components/FormSelect';
 function Registrazione(){
   const navigate = useNavigate();
 
-  const [type, setType] = useState('azienda');
+  const [type, setType] = useState('candidato');
 
   const handleTypeSelection = (selectedType) => {
     setType(selectedType);
@@ -50,6 +50,16 @@ function Registrazione(){
       }));
   };
 
+  const handleCandidatoFileChange = (e) => {
+    const { name, files } = e.target;
+
+    setCandidatoData(prev => ({
+      ...prev,
+      [name]: files[0]
+    }));
+  };
+
+
   const handleAziendaChange = (e) => {
     const { name, value } = e.target;
     setAziendaData(prev => ({
@@ -60,7 +70,6 @@ function Registrazione(){
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData();
 
     if (type === 'candidato') {
@@ -109,19 +118,23 @@ function Registrazione(){
         </div>
     
         {type === 'candidato' ? (
-            <form>
+            <form onSubmit={handleSubmit}>
                 <FormField label="Nome" type="text" name="nome" placeholder="Inserisci il tuo nome" onChange={handleCandidatoChange}/>
                 <FormField label="Cognome" type="text" name="cognome" placeholder="Inserisci il tuo cognome" onChange={handleCandidatoChange}/>
-                <FormField label="Data di Nascita" type="date" name="dataNascita" onChange={handleCandidatoChange}/>
+                <FormField label="Data di Nascita" type="date" name="data_nascita" onChange={handleCandidatoChange}/>
                 <FormField label="Email" type="email" name="email" placeholder="Inserisci la tua email" onChange={handleCandidatoChange}/>
-                <FormField label="Telefono" type="number" name="telefono" placeholder="Inserisci il tuo numero di telefono" onChange={handleCandidatoChange}/>
+                <FormField label="Telefono" type="number" name="tel" placeholder="Inserisci il tuo numero di telefono" onChange={handleCandidatoChange}/>
                 <FormField label="Nazionalità" type="text" name="nazionalita" placeholder="Inserisci la tua nazionalità" onChange={handleCandidatoChange}/>
-                <FormField label="Foto Profilo" type="file" name="profPic" placeholder="Carica la tua foto profilo" onChange={handleCandidatoChange}/>
+                <FormField label="Foto Profilo" type="file" name="foto" placeholder="Carica la tua foto profilo" onChange={handleCandidatoFileChange}/>
                 <FormField label="Password" type="text" name="password" placeholder="Inserisci la tua password" onChange={handleCandidatoChange}/>
                 <FormField label="Conferma Password" type="text" name="confermaPassword" placeholder="Conferma la tua password" onChange={handleCandidatoChange}/>
+                <Button content="Registrati" type="submit"/>
+                <div style={{ textAlign: 'center', marginTop: '20px' , marginBottom: '40px'}} onClick={()=>navigate('/')}>
+                  Torna Indietro
+                </div>
             </form>
         ):( 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <FormField label="Nome Azienda" type="text" name="nomeAzienda" placeholder="Inserisci il tuo nome" onChange={handleAziendaChange}/>
                 <FormField label="Codice Fiscale / P.IVA" type="text" name="cfiva" placeholder="Inserisci codice fiscale / p.iva" onChange={handleAziendaChange}/>
                 <FormSelect label="Tipo" name="tipo" value={aziendaData.tipo} onChange={handleAziendaChange} option1="Azienda" option2="Università" option3="Ente di Formazione"/>
@@ -132,14 +145,15 @@ function Registrazione(){
                 <FormField label="Password" type="text" name="password" placeholder="Inserisci la tua password" onChange={handleAziendaChange}/>
                 <FormField label="Conferma Password" type="text" name="confermaPassword" placeholder="Conferma la tua password" onChange={handleAziendaChange}/>
 
+                <Button content="Registrati" type="submit"/>
+                <div style={{ textAlign: 'center', marginTop: '20px' , marginBottom: '40px'}} onClick={()=>navigate('/')}>
+                  Torna Indietro
+                </div>
             </form>
 
             
         )}
-        <Button content="Registrati" onClick={handleSubmit}/>
-        <div style={{ textAlign: 'center', marginTop: '20px' , marginBottom: '40px'}} onClick={()=>navigate('/')}>
-           Torna Indietro
-        </div>
+        
     </div>    
   );
 }
