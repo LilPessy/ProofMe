@@ -1,6 +1,7 @@
 // src/components/ExperienceCard.jsx
 import React from 'react';
 import './style/ExperienceCard.css';
+import defaultPic from '../../public/default.png';
 
 function ExperienceCard({ logo, title, type, description, startDate, endDate, outcome, hash }) {
   
@@ -13,7 +14,7 @@ function ExperienceCard({ logo, title, type, description, startDate, endDate, ou
     <div className="card-container">
       {/* Intestazione Blu */}
       <div className="card-header">
-        <img src={logo} alt={`${title} logo`} className="card-logo" />
+        <img src={`http://localhost:3000/${logo}`} alt={`${title} logo`} className="card-logo" onError={(e) => { e.target.src = defaultPic; }}/>
         <h3 className="card-title">{title}</h3>
       </div>
 
