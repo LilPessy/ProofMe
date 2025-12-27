@@ -12,7 +12,10 @@ form{
     margin-top: 40px;
 }
 
-.login img{
-    margin-top: 40px;
-    width: 100px;
+.radio-group{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 70%;
 }
