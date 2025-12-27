@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 // Percorsi ai componenti (adatta se necessario)
 import Navbar from '../components/Navbar';
 import UserLogo from '../components/UserLogo';
@@ -17,6 +17,8 @@ function Home() {
   const [utente, setUtente] = useState(null); // Dati profilo (Candidato o Azienda)
   const [userType, setUserType] = useState('candidato'); // Default
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 1. Recupera credenziali dal LocalStorage
@@ -77,14 +79,14 @@ function Home() {
   };
 
   const handleDownload = () => alert("Funzionalità in arrivo!");
-  const handleAction = () => alert("Funzionalità in arrivo!");
+  const handleAction = () => navigate('/certificato');
   return (
     <div className="home-container">
       <Navbar type='home' />
 
       {/* UserLogo mostra foto candidato o logo azienda */}
       <UserLogo 
-        nome={utente?.nome} 
+        nome={utente?.nome + "(#" + utente?.id+")"} 
         foto={userType === 'candidato' ? utente?.foto : utente?.logo} 
         type={userType}
       />
