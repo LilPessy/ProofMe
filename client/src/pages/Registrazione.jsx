@@ -152,8 +152,8 @@ function Registrazione(){
                 <FormField label="Indirizzo" type="text" name="indirizzo" placeholder="Inserisci indirizzo" onChange={handleAziendaChange}/>
                 <FormField label="Telefono" type="number" name="tel" placeholder="Inserisci numero di telefono" onChange={handleAziendaChange}/>
                 <FormField label="Email" type="email" name="email" placeholder="Inserisci email" onChange={handleAziendaChange}/>
-                <FormField label="Password" type="text" name="password" placeholder="Inserisci la tua password" onChange={handleAziendaChange}/>
-                <FormField label="Conferma Password" type="text" name="confermaPassword" placeholder="Conferma la tua password" onChange={handleAziendaChange}/>
+                <FormField label="Password" type="password" name="password" placeholder="Inserisci la tua password" onChange={handleAziendaChange}/>
+                <FormField label="Conferma Password" type="password" name="confermaPassword" placeholder="Conferma la tua password" onChange={handleAziendaChange}/>
 
                 <Button content="Registrati" type="submit"/>
                 <div style={{ textAlign: 'center', marginTop: '20px' , marginBottom: '40px'}} onClick={()=>navigate('/')}>
