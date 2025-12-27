@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Registrazione from './pages/Registrazione';
 import HomeLogin from './pages/HomeLogin';
 import './App.css';
+import Certificato from './pages/Certificato';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/signin" element={<Registrazione/>} />
+        <Route path="/certificato" element={<Certificato/>} />
 
       </Routes>
     </BrowserRouter>
