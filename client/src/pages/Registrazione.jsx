@@ -31,15 +31,16 @@ function Registrazione(){
   });
 
   const [aziendaData, setAziendaData] = useState({
-    nomeAzienda: '',
-    cfiva: '',
+    nome: '',
+    cf: '',
     tipo: '',
     indirizzo: '',
-    telefono: '',
+    tel: '',
     email: '',
     password: '',
     confermaPassword: ''
   });
+
 
 
   const handleCandidatoChange = (e) => {
@@ -54,6 +55,15 @@ function Registrazione(){
     const { name, files } = e.target;
 
     setCandidatoData(prev => ({
+      ...prev,
+      [name]: files[0]
+    }));
+  };
+
+  const handleAziendaFileChange = (e) => {
+    const { name, files } = e.target;
+
+    setAziendaData(prev => ({
       ...prev,
       [name]: files[0]
     }));
@@ -135,12 +145,12 @@ function Registrazione(){
             </form>
         ):( 
             <form onSubmit={handleSubmit}>
-                <FormField label="Nome Azienda" type="text" name="nomeAzienda" placeholder="Inserisci il tuo nome" onChange={handleAziendaChange}/>
-                <FormField label="Codice Fiscale / P.IVA" type="text" name="cfiva" placeholder="Inserisci codice fiscale / p.iva" onChange={handleAziendaChange}/>
+                <FormField label="Nome Azienda" type="text" name="nome" placeholder="Inserisci il tuo nome" onChange={handleAziendaChange}/>
+                <FormField label="Codice Fiscale / P.IVA" type="text" name="cf" placeholder="Inserisci codice fiscale / p.iva" onChange={handleAziendaChange}/>
                 <FormSelect label="Tipo" name="tipo" value={aziendaData.tipo} onChange={handleAziendaChange} option1="Azienda" option2="Università" option3="Ente di Formazione"/>
-                <FormField label="Marchio" type="File" name="marchio" placeholder="Carica il tuo marchio" onChange={handleAziendaChange}/>
+                <FormField label="Marchio" type="file" name="logo" placeholder="Carica il tuo marchio" onChange={handleAziendaFileChange}/>
                 <FormField label="Indirizzo" type="text" name="indirizzo" placeholder="Inserisci indirizzo" onChange={handleAziendaChange}/>
-                <FormField label="Telefono" type="number" name="telefono" placeholder="Inserisci numero di telefono" onChange={handleAziendaChange}/>
+                <FormField label="Telefono" type="number" name="tel" placeholder="Inserisci numero di telefono" onChange={handleAziendaChange}/>
                 <FormField label="Email" type="email" name="email" placeholder="Inserisci email" onChange={handleAziendaChange}/>
                 <FormField label="Password" type="text" name="password" placeholder="Inserisci la tua password" onChange={handleAziendaChange}/>
                 <FormField label="Conferma Password" type="text" name="confermaPassword" placeholder="Conferma la tua password" onChange={handleAziendaChange}/>
