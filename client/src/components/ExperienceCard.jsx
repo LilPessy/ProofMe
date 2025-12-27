@@ -14,7 +14,7 @@ function ExperienceCard({ logo, title, type, description, startDate, endDate, ou
     <div className="card-container">
       {/* Intestazione Blu */}
       <div className="card-header">
-        <img src={`http://localhost:3000/${logo}`} alt={`${title} logo`} className="card-logo" onError={(e) => { e.target.src = defaultPic; }}/>
+        <img src={`http://localhost:3000${logo}`} alt={`${title} logo`} className="card-logo" onError={(e) => { e.target.src = defaultPic; }}/>
         <h3 className="card-title">{title}</h3>
       </div>
 
