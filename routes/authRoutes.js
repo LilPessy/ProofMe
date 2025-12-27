@@ -100,4 +100,67 @@ router.post(
 });
 
 
+
+router.post('/login/candidato', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const sql = `SELECT * FROM Candidato WHERE email = ?`;
+    const [rows] = await db.query(sql, [email]);
+
+    if (rows.length === 0) {
+      return res.status(401).json({ error: "Email non trovata" });
+    }
+
+    const candidato = rows[0];
+    const isMatch = await bcrypt.compare(password, candidato.password_hashed);
+
+    if (!isMatch) {
+      return res.status(401).json({ error: "Password errata" });
+    }
+    res.json({
+      message: "Login candidato riuscito",
+      user: {
+        id: candidato.id
+      }
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Errore login candidato" });
+  }
+});
+
+router.post('/login/emittente', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const sql = `SELECT * FROM Emittente WHERE email = ?`;
+    const [rows] = await db.query(sql, [email]);
+
+    if (rows.length === 0) {
+      return res.status(401).json({ error: "Email non trovata" });
+    }
+
+    const emittente = rows[0];
+    const isMatch = await bcrypt.compare(password, emittente.password_hashed);
+
+    if (!isMatch) {
+      return res.status(401).json({ error: "Password errata" });
+    }
+    res.json({
+      message: "Login emittente riuscito",
+      user: {
+        id: emittente.id
+      }
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Errore login emittente" });
+  }
+});
+
+
+
 module.exports = router;
