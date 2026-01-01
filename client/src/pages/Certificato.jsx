@@ -4,8 +4,11 @@ import FormSelect from '../components/FormSelect';
 import Navbar from '../components/Navbar';
 import './Certificato.css';
 import Button from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Certificato = () => {
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     idCandidato: '',
@@ -56,9 +59,19 @@ const Certificato = () => {
     }
   };
 
+  const loadPage = () => {
+    const userType = localStorage.getItem('userType');
+    if (userType !== 'azienda') {
+      alert('Accesso non autorizzato. Solo gli emittenti possono emettere certificati.');
+      window.location.href = '/home';
+    }
+  };
+
+
+
   return (
-    <div className="certificato-page">
-      <Navbar/>
+    <div className="certificato-page" onLoad={loadPage}>
+      <Navbar type="home"/>
       <h2>Emetti Certificato</h2>
 
       <form onSubmit={handleSubmit} className="certificato-form">
@@ -126,6 +139,9 @@ const Certificato = () => {
 
         <Button content="Emetti Certificato" type="submit"/>
       </form>
+      <div style={{ textAlign: 'center', marginTop: '20px' , marginBottom: '40px'}} onClick={()=>navigate('/')}>
+        Torna Indietro
+      </div>
     </div>
   );
 };
