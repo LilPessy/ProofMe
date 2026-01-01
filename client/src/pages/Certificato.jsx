@@ -9,6 +9,7 @@ const Certificato = () => {
 
   const [formData, setFormData] = useState({
     idCandidato: '',
+    emittenteId: localStorage.getItem('userId') || '',
     nomeCertificato: '',
     tipoCertificato: '',
     descrizione: '',
