@@ -89,7 +89,7 @@ function Registrazione(){
         }
       });
 
-      await fetch(
+      const response = await fetch(
         'http://localhost:3000/api/auth/register/candidato',
         {
           method: 'POST',
@@ -97,6 +97,14 @@ function Registrazione(){
         }
       );
 
+      if (!response.ok) {
+        const result = await response.json();
+        alert(result.error || 'Errore di registrazione');
+        return;
+      }
+
+      alert('Registrazione candidato avvenuta con successo!');
+      navigate('/');
     } else {
       Object.entries(aziendaData).forEach(([key, value]) => {
         if (value !== null) {
@@ -104,13 +112,22 @@ function Registrazione(){
         }
       });
 
-      await fetch(
+      const response = await fetch(
         'http://localhost:3000/api/auth/register/emittente',
         {
           method: 'POST',
           body: formData
         }
       );
+
+      if (!response.ok) {
+        const result = await response.json();
+        alert(result.error || 'Errore di registrazione');
+        return;
+      }
+
+      alert('Registrazione emittente avvenuta con successo!');
+      navigate('/');
     }
   };
 
@@ -136,8 +153,8 @@ function Registrazione(){
                 <FormField label="Telefono" type="number" name="tel" placeholder="Inserisci il tuo numero di telefono" onChange={handleCandidatoChange}/>
                 <FormField label="Nazionalità" type="text" name="nazionalita" placeholder="Inserisci la tua nazionalità" onChange={handleCandidatoChange}/>
                 <FormField label="Foto Profilo" type="file" name="foto" placeholder="Carica la tua foto profilo" onChange={handleCandidatoFileChange}/>
-                <FormField label="Password" type="text" name="password" placeholder="Inserisci la tua password" onChange={handleCandidatoChange}/>
-                <FormField label="Conferma Password" type="text" name="confermaPassword" placeholder="Conferma la tua password" onChange={handleCandidatoChange}/>
+                <FormField label="Password" type="password" name="password" placeholder="Inserisci la tua password" onChange={handleCandidatoChange}/>
+                <FormField label="Conferma Password" type="password" name="confermaPassword" placeholder="Conferma la tua password" onChange={handleCandidatoChange}/>
                 <Button content="Registrati" type="submit"/>
                 <div style={{ textAlign: 'center', marginTop: '20px' , marginBottom: '40px'}} onClick={()=>navigate('/')}>
                   Torna Indietro
@@ -147,7 +164,7 @@ function Registrazione(){
             <form onSubmit={handleSubmit}>
                 <FormField label="Nome Azienda" type="text" name="nome" placeholder="Inserisci il tuo nome" onChange={handleAziendaChange}/>
                 <FormField label="Codice Fiscale / P.IVA" type="text" name="cf" placeholder="Inserisci codice fiscale / p.iva" onChange={handleAziendaChange}/>
-                <FormSelect label="Tipo" name="tipo" value={aziendaData.tipo} onChange={handleAziendaChange} option1="Azienda" option2="Università" option3="Ente di Formazione"/>
+                <FormSelect label="Tipo" name="tipo" value={aziendaData.tipo} onChange={handleAziendaChange} option1="Azienda" option2="Università" option3="Ente_Formazione"/>
                 <FormField label="Marchio" type="file" name="logo" placeholder="Carica il tuo marchio" onChange={handleAziendaFileChange}/>
                 <FormField label="Indirizzo" type="text" name="indirizzo" placeholder="Inserisci indirizzo" onChange={handleAziendaChange}/>
                 <FormField label="Telefono" type="number" name="tel" placeholder="Inserisci numero di telefono" onChange={handleAziendaChange}/>
