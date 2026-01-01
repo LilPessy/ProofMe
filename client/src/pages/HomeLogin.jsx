@@ -7,10 +7,16 @@ import { useNavigate } from 'react-router-dom';
 
 function HomeLogin() {
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const autoLogin = () => {
+    if (localStorage.getItem('userId') && localStorage.getItem('userType')) {
+      navigate('/home');
+    }
+  };
 
   return (
-    <div className='content'>
+    <div className='content' onLoad={autoLogin}>
       <Navbar />
       <img src={proofmeLogo} />
       <h2 style={{ color: '#0B1E45', fontSize: '50px', marginBottom: '5px' }}>ProofMe</h2>
