@@ -1,8 +1,7 @@
-// certificatiRoutes.js
 const express = require('express');
 const router = express.Router();
 const db = require('../db'); 
-const crypto = require('crypto'); // <--- 1. Importiamo la libreria per l'hash SHA-256
+const crypto = require('crypto'); // Libreria nativa per SHA-256
 
 // =======================================================
 // 1. GET: Visualizza certificati di un CANDIDATO (Wallet)
@@ -19,7 +18,7 @@ router.get('/candidato/:id', async (req, res) => {
         JOIN Emittente e ON c.emittente_id = e.id
         LEFT JOIN Blocco b ON c.id = b.certificato_id
         WHERE c.candidato_id = ?
-        ORDER BY c.data_inizio;
+        ORDER BY c.data_inizio DESC;
     `;
 
     try {
@@ -62,24 +61,43 @@ router.get('/emittente/:id', async (req, res) => {
 // 3. POST: EMISSIONE NUOVO CERTIFICATO (Mining simulato)
 // =======================================================
 router.post('/', async (req, res) => {
-    // Recuperiamo una connessione dedicata per la transazione
-    const conn = await db.getConnection();
+    // Nota: Usiamo db.getConnection() per gestire la transazione manualmente
+    let conn; 
 
     try {
-        // 1. Recupero dati dal Frontend
         const { 
             idCandidato, emittenteId, nomeCertificato, tipoCertificato, 
             descrizione, dataInizio, dataFine, votoLaurea 
         } = req.body;
 
         if (!emittenteId) {
-            return res.status(401).json({ error: "Emittente non identificato. Effettua il login." });
+            return res.status(401).json({ error: "Emittente non identificato." });
+        }
+
+        // --- [STEP 0] CONTROLLO PERMESSI (Permissioned Blockchain) ---
+        // Prima di tutto, verifichiamo se l'azienda è abilitata a scrivere sul ledger.
+        // Questa query la facciamo fuori dalla transazione per velocità.
+        const [emittenteRows] = await db.query(
+            'SELECT is_verified FROM Emittente WHERE id = ?', 
+            [emittenteId]
+        );
+
+        if (emittenteRows.length === 0) {
+            return res.status(404).json({ error: "Emittente non trovato." });
+        }
+
+        if (emittenteRows[0].is_verified !== 1) {
+            // Blocca tutto se non verificato (403 Forbidden)
+            return res.status(403).json({ 
+                error: "Non autorizzato. Il tuo account Emittente non è ancora stato verificato dall'Admin." 
+            });
         }
 
         // --- INIZIO TRANSAZIONE ---
+        conn = await db.getConnection();
         await conn.beginTransaction();
 
-        // A. Inserimento nella tabella CERTIFICATO
+        // [STEP A] Inserimento dati Off-Chain (Certificato)
         const [certResult] = await conn.query(
             `INSERT INTO Certificato 
             (denominazione, tipo, data_inizio, data_fine, valutazione, descrizione, candidato_id, emittente_id) 
@@ -89,20 +107,23 @@ router.post('/', async (req, res) => {
         
         const nuovoCertificatoId = certResult.insertId;
 
-        // B. Logica BLOCKCHAIN (Calcolo Hash)
+        // [STEP B] Logica BLOCKCHAIN (Calcolo Hash e Chaining)
         
-        // B1. Recupera l'hash dell'ultimo blocco inserito (PrevHash)
+        // B1. Recupera l'hash dell'ultimo blocco inserito globalmente (o filtrato per candidato se vuoi catene separate)
+        // Per semplicità qui prendiamo l'ultimo blocco globale della tabella
         const [lastBlock] = await conn.query('SELECT hash FROM Blocco ORDER BY id DESC LIMIT 1');
-        // Se è il primo blocco (Genesis), usiamo una stringa di zeri
+        
+        // Se è il primo blocco assoluto (Genesis), usiamo una stringa di zeri
         const prevHash = lastBlock.length > 0 ? lastBlock[0].hash : '0'.repeat(64);
         
         const timestamp = new Date().toISOString();
 
-        // B2. Crea il payload univoco da hashare
+        // B2. Crea il payload univoco da hashare (Fingerprint del certificato)
         const datiBlocco = {
             id: nuovoCertificatoId,
             emittente: emittenteId,
             candidato: idCandidato,
+            titolo: nomeCertificato, // Importante: l'hash deve dipendere dal contenuto!
             prevHash: prevHash,
             timestamp: timestamp
         };
@@ -110,8 +131,7 @@ router.post('/', async (req, res) => {
         // B3. Calcola l'hash SHA-256
         const hash = crypto.createHash('sha256').update(JSON.stringify(datiBlocco)).digest('hex');
 
-        // C. Inserimento nella tabella BLOCCO
-        // Nota: new Date(timestamp) converte la stringa ISO in formato data compatibile con MySQL
+        // [STEP C] Scrittura On-Chain (Blocco)
         await conn.query(
             `INSERT INTO Blocco (hash, prev_hash, time_stamp, certificato_id) 
              VALUES (?, ?, ?, ?)`,
@@ -122,19 +142,18 @@ router.post('/', async (req, res) => {
         await conn.commit();
 
         res.status(201).json({ 
-            message: 'Certificato emesso con successo!', 
+            message: 'Certificato emesso e notarizzato con successo!', 
             certificatoId: nuovoCertificatoId,
             hashBlocco: hash
         });
 
     } catch (error) {
-        // Se c'è un errore, annulla tutte le operazioni fatte nel DB (Rollback)
-        await conn.rollback();
+        // Se c'è un errore, annulla tutte le operazioni (Rollback)
+        if (conn) await conn.rollback();
         console.error("Errore durante l'emissione:", error);
         res.status(500).json({ error: "Errore durante l'emissione del certificato." });
     } finally {
-        // Rilascia la connessione al pool
-        conn.release();
+        if (conn) conn.release();
     }
 });
 
